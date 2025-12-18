@@ -1,0 +1,164 @@
+
+</head><!DOCTYPE html> 
+<html lang ="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>Live Restaurent</title>
+    <link rel="stylesheet" href="rest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+</head>
+<body>
+    <div class="name"><div class="side"><span class="start">🍲N</span>ashi Restaurent</div></div>
+<img class="food1" src="image/food1.png" alt="Vegetable food" width="200px" height="250px">
+<div class="head">
+    <span><p class="green">50% OFF on All Product</p></span>
+<h1 class="h1">Enjoy Your Delicious Food</h1>
+<p class="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+<span><p class="p2">Explore Now</p></span> 
+</div>
+<div class="'features">
+<div class="line" >
+    <h2 class="h2"><b><span class="image">🎁</span>Discount Voucher</b></h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </div>
+<div class="line">
+    <h2 class="h2" ><b><span class="image">🍵</span>Fresh Healthy Food</b></h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+     </div>
+    <div class="line">
+    <h2 class="h2" ><b><span class="image">🏡</span>Fast Home Delivery</b></h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr class="hr">
+    <p class="menu">Our Menu</p>
+    <p class="explore"><b>Explore Our Menu</b></p>     
+<div class="foods">
+   <div class="item1" onclick="showPrice('Chicken Curry', '₹220', 'image/7.png')">
+    <img src="image/7.png" alt="food">
+    <figcaption class="chi">Chicken Curry</figcaption>
+   </div>
+
+  <div class="item2" onclick="showPrice('Biryani', '₹280', 'image/2.png')">
+    <img src="image/2.png" alt="food">
+    <figcaption class="bir">All Types of Biryani's <br>are Available</figcaption>
+  </div>
+
+  <div class="item3" onclick="showPrice('Masala Items', '₹150', 'image/5.png')">
+    <img src="image/5.png" alt="food">
+    <figcaption class="mas">Munching Masala's</figcaption>
+  </div>
+</div>
+
+
+<div class="end">
+  <div class="e1">  <h1 class="matter1"><span class="ends">🍲N</span>ashi Restaurent</h1></div>
+<div class="matter2">
+    <ul><h2 class="m">Main Links</h2>
+    <li><a class="links" href="www.youtube.com">Order Tracking</a></li>
+    <li><a class="links" href="www.youtube.com">New Order</a></li> 
+    <li><a class="links" href="www.youtube.com">Contact Us</a></li>
+    <li><a class="links" href="www.youtube.com">News & thogs</a></li>
+    </ul>
+</div>
+    <div class="matter3">
+        <ul><h2 class="m">Support Us</h2>
+            <li><a class="links" href="www.youtube.com">About Us</a></li>
+            <li><a class="links" href="www.youtube.com">Privacy Policy</a></li>
+            <li><a class="links" href="www.youtube.com">Terms & Conditions</a></li>
+        </ul>
+    </div>
+    <div class="matter4">
+        <ul><h2 class="m">Fill the form</h2> 
+            <li>Support</li>
+            <li><label for="mail"></label>
+            <input type="text" name="mail" id="mail" placeholder="Enter your email"></li>
+            <li>Follow Us on</li>
+            <li><i class="fab fa-facebook"></i> &nbsp;<i class="fab fa-twitter">&nbsp;</i><i class="fab fa-youtube"></i>&nbsp;<i class="fab fa-instagram"></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <img id="foodImg" src="" alt="Food Image">
+        <h2 id="foodName"></h2>
+        <p id="foodPrice"></p>
+        <button class="orderBtn">Order Now</button>
+    </div>
+</div>
+<!-- Feature Popup Modal -->
+<div id="featurePopup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2 id="featureName"></h2>
+        <p id="featureDesc"></p>
+    </div>
+</div>
+
+
+<script>
+function showPrice(name, price, imgPath) {
+    const img = document.getElementById("foodImg");
+    img.src = imgPath;
+    img.style.display = "block";
+
+    document.getElementById("foodName").innerText = name;
+    document.getElementById("foodPrice").innerText = "Price: " + price;
+
+    document.getElementById("popup").style.display = "block";
+}
+
+document.querySelector(".close").onclick = function () {
+    document.getElementById("popup").style.display = "none";
+};
+
+window.onclick = function (event) {
+    let popup = document.getElementById("popup");
+    if (event.target === popup) {
+        popup.style.display = "none";
+    }
+};
+const features = document.querySelectorAll(".line");
+
+const descriptions = {
+    "Discount Voucher": "Get 50% off on all products. Limited time offer!",
+    "Fresh Healthy Food": "Enjoy fresh, healthy meals made with love.",
+    "Fast Home Delivery": "We deliver your food fast, safely, and hot!"
+};
+
+features.forEach(feature => {
+    feature.addEventListener("click", () => {
+        const name = feature.querySelector("h2").innerText.replace("🎁","")
+                                                                .replace("🍵","")
+                                                                .replace("🏡","");
+        document.getElementById("featureName").innerText = name.trim();
+        document.getElementById("featureDesc").innerText = descriptions[name.trim()];
+        document.getElementById("featurePopup").style.display = "block";
+    });
+});
+
+// Close popup
+document.querySelector("#featurePopup .close").onclick = function () {
+    document.getElementById("featurePopup").style.display = "none";
+};
+
+// Close when clicking outside
+window.onclick = function (event) {
+    let popup = document.getElementById("featurePopup");
+    if (event.target === popup) {
+        popup.style.display = "none";
+    }
+};
+
+
+</script>
+
+</body>
+</html>
